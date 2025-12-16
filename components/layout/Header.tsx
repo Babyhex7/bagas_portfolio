@@ -38,7 +38,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold">
             <span className="bg-gradient-to-r from-cosmic-purple to-cosmic-pink bg-clip-text text-transparent">
-              Bagas AH
+              Bagas AN
             </span>
           </Link>
 

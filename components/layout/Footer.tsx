@@ -18,7 +18,7 @@ export function Footer() {
           {/* About */}
           <div>
             <h3 className="text-xl font-bold bg-gradient-to-r from-cosmic-purple to-cosmic-pink bg-clip-text text-transparent mb-4">
-              Bagas Aji Handoko
+              Bagas Adhi Nugraha
             </h3>
             <p className="text-gray-400 text-sm">
               Fullstack Developer & AI Enthusiast. Passionate about building amazing web and mobile applications.
@@ -75,7 +75,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-cosmic-purple/10 text-center">
           <p className="text-gray-500 text-sm">
-            © {currentYear} Bagas Aji Handoko. All rights reserved.
+            © {currentYear} Bagas Adhi Nugraha. All rights reserved.
           </p>
         </div>
       </div>

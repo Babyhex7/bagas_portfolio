@@ -64,7 +64,7 @@ export function Hero() {
           >
             <span className="text-white">Bagas </span>
             <span className="bg-gradient-to-r from-cosmic-purple via-cosmic-pink to-cosmic-blue bg-clip-text text-transparent animate-gradient">
-              Aji Handoko
+              Adhi Nugraha
             </span>
           </motion.h1>
 
@@ -85,9 +85,11 @@ export function Hero() {
             transition={{ delay: 0.7 }}
             className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-8"
           >
-            Mahasiswa S1 Rekayasa Perangkat Lunak UPI dengan passion di Web & Mobile Development.
+            Mahasiswa S1 Rekayasa Perangkat Lunak UPI | Fullstack Architecture Specialist
             <br />
-            Berpengalaman mengembangkan aplikasi AI dengan 2 HKI terdaftar dan aktif sebagai Public Speaker di 20+ event.
+            <span className="text-cosmic-purple font-semibold">React.js • Node.js • Flutter • Golang • Python • AI Developer</span>
+            <br />
+            2 HKI Terdaftar • Public Speaker 25+ Events • Top Innovator
           </motion.p>
 
           {/* CTA Buttons */}
