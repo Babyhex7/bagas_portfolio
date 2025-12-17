@@ -30,7 +30,7 @@ ${formData.message}`;
     window.open(whatsappUrl, '_blank');
     
     // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setFormData({ name: '' , subject: '', message: '' });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
