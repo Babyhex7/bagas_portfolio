@@ -52,37 +52,59 @@ export function About() {
             className="relative"
           >
             <div className="relative aspect-square max-w-md mx-auto">
-              {/* Decorative Elements */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-cosmic-purple to-cosmic-pink rounded-2xl blur-2xl opacity-20 animate-pulse-slow" />
+              {/* Animated Glow Background */}
+              <motion.div 
+                className="absolute -inset-4 bg-gradient-to-r from-cosmic-purple via-cosmic-pink to-cosmic-blue rounded-2xl blur-3xl opacity-30"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  rotate: [0, 5, 0],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
               
-              {/* Photo Container */}
-              <div className="relative rounded-2xl overflow-hidden border-2 border-cosmic-purple/30 bg-gradient-to-br from-space-light to-space-dark">
-                {/* Placeholder for your photo */}
-                <div className="aspect-square flex items-center justify-center bg-gradient-to-br from-cosmic-purple/10 to-cosmic-pink/10">
-                  <div className="text-center p-8">
-                    <GraduationCap className="w-32 h-32 mx-auto mb-4 text-cosmic-purple opacity-50" />
-                    <p className="text-gray-400 text-sm">
-                      Letakkan foto Anda di:<br />
-                      <code className="text-cosmic-purple text-xs">
-                        /public/assets/images/profile.jpg
-                      </code>
-                    </p>
-                  </div>
-                </div>
-                {/* Uncomment dan ganti path setelah foto diupload */}
-                {/* <Image
+              {/* Photo Container with Hover Effect */}
+              <motion.div 
+                className="relative rounded-2xl overflow-hidden border-2 border-cosmic-purple/40 bg-gradient-to-br from-space-light to-space-dark shadow-2xl shadow-cosmic-purple/20 group"
+                whileHover={{ scale: 1.02, borderColor: "rgba(168, 85, 247, 0.6)" }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* Gradient Overlay Top */}
+                <div className="absolute inset-0 bg-gradient-to-b from-space-dark/60 via-transparent to-transparent z-10 pointer-events-none" />
+                
+                {/* Gradient Overlay Bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-space-dark/80 via-transparent to-transparent z-10 pointer-events-none" />
+                
+                {/* Your Photo */}
+                <Image
                   src="/assets/images/profile.jpg"
                   alt="Bagas Adhi Nugraha"
                   width={500}
                   height={500}
-                  className="object-cover w-full h-full"
+                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                   priority
-                /> */}
-              </div>
+                />
+                
+                {/* Bottom Badge - Appears on Hover */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-space-dark via-space-dark/95 to-transparent z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                  <p className="text-white font-bold text-sm">Fullstack Developer</p>
+                </div>
+              </motion.div>
 
-              {/* Floating Decoration */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-cosmic-pink/20 rounded-full blur-3xl" />
-              <div className="absolute -top-6 -left-6 w-32 h-32 bg-cosmic-blue/20 rounded-full blur-3xl" />
+              {/* Floating Decorative Orbs */}
+              <motion.div 
+                className="absolute -bottom-8 -right-8 w-32 h-32 bg-cosmic-pink/30 rounded-full blur-3xl"
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div 
+                className="absolute -top-8 -left-8 w-32 h-32 bg-cosmic-blue/30 rounded-full blur-3xl"
+                animate={{ y: [0, 20, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              />
             </div>
           </motion.div>
 
