@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/Card';
 import type { Skill } from '@/types';
 import Image from 'next/image';
+import { Monitor, Server, Smartphone, Brain, Database, Wrench } from 'lucide-react';
 
 interface SkillsProps {
   skills: Skill[];
@@ -11,12 +12,12 @@ interface SkillsProps {
 
 export function Skills({ skills }: SkillsProps) {
   const categories = [
-    { id: 'frontend', label: 'Frontend Development', color: 'cosmic-purple', icon: '💻' },
-    { id: 'backend', label: 'Backend Development', color: 'cosmic-pink', icon: '⚙️' },
-    { id: 'mobile', label: 'Mobile Development', color: 'cosmic-blue', icon: '📱' },
-    { id: 'ai', label: 'AI & Machine Learning', color: 'green-500', icon: '🤖' },
-    { id: 'database', label: 'Database', color: 'yellow-500', icon: '💾' },
-    { id: 'tools', label: 'Tools & DevOps', color: 'purple-500', icon: '🛠️' },
+    { id: 'frontend', label: 'Frontend Development', color: 'cosmic-purple', Icon: Monitor },
+    { id: 'backend', label: 'Backend Development', color: 'cosmic-pink', Icon: Server },
+    { id: 'mobile', label: 'Mobile Development', color: 'cosmic-blue', Icon: Smartphone },
+    { id: 'ai', label: 'AI & Machine Learning', color: 'green-500', Icon: Brain },
+    { id: 'database', label: 'Database', color: 'yellow-500', Icon: Database },
+    { id: 'tools', label: 'Tools & DevOps', color: 'purple-500', Icon: Wrench },
   ];
 
   const getSkillsByCategory = (category: string) => {
@@ -94,6 +95,7 @@ export function Skills({ skills }: SkillsProps) {
           {categories.map((category, catIndex) => {
             const categorySkills = getSkillsByCategory(category.id);
             if (categorySkills.length === 0) return null;
+            const IconComponent = category.Icon;
 
             return (
               <motion.div
@@ -106,7 +108,7 @@ export function Skills({ skills }: SkillsProps) {
                 <Card className="h-full">
                   {/* Category Header */}
                   <div className="flex items-center gap-3 mb-6 pb-4 border-b border-cosmic-purple/20">
-                    <span className="text-3xl">{category.icon}</span>
+                    <IconComponent className={`w-8 h-8 text-${category.color}`} />
                     <h3 className="text-xl font-bold text-white">{category.label}</h3>
                   </div>
 

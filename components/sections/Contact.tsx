@@ -109,19 +109,6 @@ ${formData.message}`;
                 Send via WhatsApp
               </Button>
 
-              <div className="text-center">
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Or chat directly at{' '}
-                  <a 
-                    href="https://wa.me/6285885725027" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-green-600 dark:text-green-400 hover:underline"
-                  >
-                    +62 858-8572-5027
-                  </a>
-                </p>
-              </div>
             </form>
           </Card>
         </div>

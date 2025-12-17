@@ -126,7 +126,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
           {/* Tech Stack - Fixed Height */}
           <div className="flex flex-wrap gap-2 mb-4 min-h-[4.5rem]">
-            {project.tags.slice(0, 4).map((tag) => (
+            {project.tags.slice(0, 10).map((tag) => (
               <span
                 key={tag}
                 className="text-xs px-2 py-1 rounded bg-space-light text-gray-300 border border-cosmic-blue/30 h-fit"
@@ -134,9 +134,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 {tag}
               </span>
             ))}
-            {project.tags.length > 4 && (
+            {project.tags.length > 10 && (
               <span className="text-xs px-2 py-1 rounded bg-space-light text-gray-300 border border-cosmic-blue/30">
-                +{project.tags.length - 4}
+                +{project.tags.length - 10}
               </span>
             )}
           </div>
