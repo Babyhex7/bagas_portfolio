@@ -1,9 +1,7 @@
 'use client';
 
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,12 +16,21 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/skills', label: 'Skills' },
-    { href: '/achievements', label: 'Achievements' },
+    { href: '#hero', label: 'Home' },
+    { href: '#about', label: 'About' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#skills', label: 'Skills' },
+    { href: '#achievements', label: 'Achievements' },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   return (
     <header
@@ -36,27 +43,36 @@ export function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold">
+          <a 
+            href="#hero" 
+            onClick={(e) => handleNavClick(e, '#hero')}
+            className="text-2xl font-bold cursor-pointer"
+          >
             <span className="bg-gradient-to-r from-cosmic-purple to-cosmic-pink bg-clip-text text-transparent">
               Bagas AN
             </span>
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
-                className="text-gray-300 hover:text-white transition-colors relative group"
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-gray-300 hover:text-white transition-colors relative group cursor-pointer"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cosmic-purple to-cosmic-pink transition-all group-hover:w-full" />
-              </Link>
+              </a>
             ))}
-            <Button size="sm" variant="primary">
+            <a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="px-6 py-2 rounded-lg bg-gradient-to-r from-cosmic-purple to-cosmic-pink hover:shadow-lg hover:shadow-cosmic-purple/50 transition-all cursor-pointer text-white font-medium"
+            >
               Contact Me
-            </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -72,18 +88,22 @@ export function Header() {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-gray-300 hover:text-white transition-colors py-2"
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="block text-gray-300 hover:text-white transition-colors py-2 cursor-pointer"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
-            <Button size="sm" variant="primary" className="w-full">
+            <a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="block w-full text-center px-6 py-3 rounded-lg bg-gradient-to-r from-cosmic-purple to-cosmic-pink hover:shadow-lg transition-all cursor-pointer text-white font-medium"
+            >
               Contact Me
-            </Button>
+            </a>
           </div>
         )}
       </nav>

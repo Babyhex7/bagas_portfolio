@@ -56,7 +56,7 @@ export function Achievements({ achievements }: AchievementsProps) {
   };
 
   return (
-    <section className="py-20 px-4 bg-space-dark">
+    <section id="achievements" className="py-20 px-4 bg-space-dark">
       <div className="container mx-auto">
         {/* Section Header */}
         <motion.div

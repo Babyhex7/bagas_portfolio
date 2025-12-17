@@ -2,23 +2,22 @@ import type { Skill } from '@/types';
 
 export const skills: Skill[] = [
   // Frontend
-  { id: '1', name: 'React', category: 'frontend', level: 90 },
+  { id: '1', name: 'React', category: 'frontend', level: 97 },
   { id: '2', name: 'Next.js', category: 'frontend', level: 85 },
   { id: '3', name: 'TypeScript', category: 'frontend', level: 88 },
   { id: '4', name: 'Tailwind CSS', category: 'frontend', level: 92 },
-  { id: '5', name: 'Vue.js', category: 'frontend', level: 75 },
+  { id: '5', name: 'Vue.js', category: 'frontend', level: 96 },
   
   // Backend
-  { id: '6', name: 'Node.js', category: 'backend', level: 85 },
+  { id: '6', name: 'Node.js', category: 'backend', level: 96 },
   { id: '7', name: 'Express.js', category: 'backend', level: 82 },
   { id: '8', name: 'Python', category: 'backend', level: 88 },
   { id: '9', name: 'FastAPI', category: 'backend', level: 80 },
   { id: '10', name: 'Laravel', category: 'backend', level: 70 },
   
   // Mobile
-  { id: '11', name: 'React Native', category: 'mobile', level: 85 },
-  { id: '12', name: 'Flutter', category: 'mobile', level: 78 },
-  { id: '13', name: 'Expo', category: 'mobile', level: 82 },
+  { id: '12', name: 'Flutter', category: 'mobile', level: 97 },
+  { id: '13', name: 'Dart', category: 'mobile', level: 95 },
   
   // AI/ML
   { id: '14', name: 'TensorFlow', category: 'ai', level: 80 },

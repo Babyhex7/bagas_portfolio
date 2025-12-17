@@ -5,8 +5,15 @@ import { Button } from '@/components/ui/Button';
 import { ArrowDown } from 'lucide-react';
 
 export function Hero() {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.querySelector(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-space-darker via-space-dark to-space-light">
         {/* Stars */}
@@ -44,17 +51,6 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Status Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-sm mb-6"
-          >
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            Available for opportunities
-          </motion.div>
-
           {/* Name */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -99,10 +95,18 @@ export function Hero() {
             transition={{ delay: 0.9 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button size="lg" variant="primary">
+            <Button 
+              size="lg" 
+              variant="primary"
+              onClick={() => scrollToSection('#projects')}
+            >
               View Projects
             </Button>
-            <Button size="lg" variant="outline">
+            <Button 
+              size="lg" 
+              variant="outline"
+              onClick={() => scrollToSection('#contact')}
+            >
               Contact Me
             </Button>
           </motion.div>

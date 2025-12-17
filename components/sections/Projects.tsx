@@ -171,7 +171,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 export function Projects({ projects }: ProjectsProps) {
 
   return (
-    <section className="py-20 px-4 bg-space-dark">
+    <section id="projects" className="py-20 px-4 bg-space-dark">
       <div className="container mx-auto max-w-7xl">
         {/* Section Header */}
         <motion.div

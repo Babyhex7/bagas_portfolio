@@ -21,7 +21,7 @@ export function About() {
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-space-light to-space-dark">
+    <section id="about" className="py-20 px-4 bg-gradient-to-b from-space-light to-space-dark">
       <div className="container mx-auto max-w-7xl">
         {/* Section Header */}
         <motion.div

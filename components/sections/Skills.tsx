@@ -69,7 +69,7 @@ export function Skills({ skills }: SkillsProps) {
   };
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-space-dark to-space-light">
+    <section id="skills" className="py-20 px-4 bg-gradient-to-b from-space-dark to-space-light">
       <div className="container mx-auto max-w-7xl">
         {/* Section Header */}
         <motion.div
