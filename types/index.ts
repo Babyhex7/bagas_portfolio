@@ -2,7 +2,8 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  image: string;
+  image: string; // Main image (backward compatibility)
+  images?: string[]; // Multiple screenshots untuk carousel
   tags: string[];
   category: 'web' | 'mobile' | 'ai';
   demoUrl?: string;

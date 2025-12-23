@@ -5,7 +5,12 @@ export const projects: Project[] = [
     id: '1',
     title: 'Aplikasi Mobile AI - Deteksi Otomatis Konten NSFW',
     description: 'Aplikasi mobile untuk pencegahan konten pornografi digital dengan sistem deteksi AI otomatis (image classification + AI moderation). Implementasi pipeline backend Golang dan REST API untuk komunikasi real-time. Terdaftar sebagai HKI (Hak Kekayaan Intelektual) 2024.',
-    image: '/assets/images/project-nsfw.jpg',
+    image: '/assets/images/rf1.jpeg',
+    images: [
+      '/assets/images/rf1.jpeg',
+      '/assets/images/rf2.jpeg',
+      '/assets/images/rf3.jpeg',
+    ],
     tags: ['Flutter', 'Golang', 'TensorFlow', 'REST API', 'AI'],
     category: 'ai',
     githubUrl: 'https://github.com/Babyhex7',
@@ -15,6 +20,11 @@ export const projects: Project[] = [
     title: 'Aplikasi EIRENE - Intervensi Mental Illness Berbasis AI',
     description: 'Aplikasi mobile berbasis AI untuk mitigasi dampak standarisasi TikTok terhadap remaja. Mengembangkan arsitektur frontend dan backend menggunakan Flutter & Golang. Mengintegrasikan model AI untuk analisis perilaku pengguna dan deteksi risiko mental illness. Terdaftar sebagai Karya Cipta HKI 2024.',
     image: '/assets/images/project-eirene.jpg',
+    images: [
+      '/assets/images/project-eirene.jpg',
+      '/assets/images/rf1.jpeg', // Ganti dengan screenshot EIRENE yang sesuai
+      '/assets/images/rf2.jpeg', // Ganti dengan screenshot EIRENE yang sesuai
+    ],
     tags: ['Flutter', 'Python', 'Golang', 'AI Moderation'],
     category: 'ai',
     githubUrl: 'https://github.com/Babyhex7',
@@ -24,6 +34,11 @@ export const projects: Project[] = [
     title: 'Web & Extension Deteksi Konten Pornografi',
     description: 'Web monitoring dan ekstensi browser berbasis AI deteksi konten sensitif. Menangani backend REST API dan integrasi ke sistem browser untuk real-time content filtering.',
     image: '/assets/images/project-web-extension.jpg',
+    images: [
+      '/assets/images/project-web-extension.jpg',
+      '/assets/images/rf1.jpeg',
+      '/assets/images/rf2.jpeg',
+    ],
     tags: ['React.js', 'Node.js', 'JavaScript', 'MySQL', 'AI'],
     category: 'web',
     githubUrl: 'https://github.com/Babyhex7',
@@ -33,6 +48,11 @@ export const projects: Project[] = [
     title: 'Sistem E-Laundry',
     description: 'Platform e-laundry dengan frontend Flutter responsif dan backend Golang dengan microservices architecture. Mengelola database dan autentikasi pengguna dengan MySQL.',
     image: '/assets/images/project-elaundry.jpg',
+    images: [
+      '/assets/images/project-elaundry.jpg',
+      '/assets/images/rf1.jpeg',
+      '/assets/images/rf2.jpeg',
+    ],
     tags: ['Flutter', 'Golang', 'MySQL', 'Microservices'],
     category: 'mobile',
     githubUrl: 'https://github.com/Babyhex7',
@@ -42,6 +62,11 @@ export const projects: Project[] = [
     title: 'Web Baletani - E-Commerce & Chatbot',
     description: 'Sistem e-commerce sayur dan buah lokal dengan chatbot AI berbasis Python. Mengembangkan fitur transaksi real-time dan panel CRUD admin untuk manajemen produk dan pesanan.',
     image: '/assets/images/project-baletani.jpg',
+    images: [
+      '/assets/images/project-baletani.jpg',
+      '/assets/images/rf1.jpeg',
+      '/assets/images/rf3.jpeg',
+    ],
     tags: ['React.js', 'Node.js', 'MySQL', 'Python', 'AI Chatbot'],
     category: 'web',
     githubUrl: 'https://github.com/Babyhex7',
@@ -51,6 +76,11 @@ export const projects: Project[] = [
     title: 'Web Manajemen Desa Drawati',
     description: 'Dashboard administrasi desa digital untuk Kabupaten Bandung. Merancang sistem CRUD terintegrasi dengan frontend React dan backend Laravel untuk pengelolaan data desa.',
     image: '/assets/images/project-drawati.jpg',
+    images: [
+      '/assets/images/project-drawati.jpg',
+      '/assets/images/rf2.jpeg',
+      '/assets/images/rf3.jpeg',
+    ],
     tags: ['Laravel', 'React.js', 'MySQL'],
     category: 'web',
     githubUrl: 'https://github.com/Babyhex7',

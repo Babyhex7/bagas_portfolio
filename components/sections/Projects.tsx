@@ -13,12 +13,10 @@ interface ProjectsProps {
 
 // Project Card Component dengan carousel sendiri
 function ProjectCard({ project, index }: { project: Project; index: number }) {
-  // Mock images untuk carousel (nanti bisa diganti dengan array gambar real)
-  const images = [
-    project.image,
-    project.image, // Duplicate untuk demo, nanti ganti dengan screenshot berbeda
-    project.image,
-  ];
+  // Gunakan array images jika ada, atau fallback ke single image
+  const images = project.images && project.images.length > 0 
+    ? project.images 
+    : [project.image];
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
