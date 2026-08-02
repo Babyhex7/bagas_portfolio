@@ -1,129 +1,168 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
+import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/constants';
+import { cn } from '@/lib/utils';
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [band, setBand] = useState<'ink' | 'paper'>('ink');
+  const [active, setActive] = useState<string>('');
+
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 220,
+    damping: 40,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navLinks = [
-    { href: '#hero', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#achievements', label: 'Achievements' },
-  ];
+  /* The header borrows the colour of whatever ground sits under it. */
+  useEffect(() => {
+    const sections = document.querySelectorAll<HTMLElement>('[data-band]');
+    if (!sections.length) return;
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          setBand(el.dataset.band === 'paper' ? 'paper' : 'ink');
+          if (el.id) setActive(el.id);
+        });
+      },
+      { rootMargin: '-72px 0px -92% 0px', threshold: 0 }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  const go = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith('#')) return;
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsMobileMenuOpen(false);
-    }
-  };
+    setMenuOpen(false);
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
+
+  const onInk = band === 'ink' || menuOpen;
 
   return (
     <>
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-space-dark/95 backdrop-blur-lg border-b border-cosmic-purple/20 shadow-lg'
-            : 'bg-space-dark/80 backdrop-blur-md'
-        }`}
+        className={cn(
+          'fixed inset-x-0 top-0 z-50 transition-colors duration-500',
+          onInk ? 'text-paper' : 'text-ink'
+        )}
       >
-        <nav className="container mx-auto px-4 py-3 md:py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <a 
-              href="#hero" 
-              onClick={(e) => handleNavClick(e, '#hero')}
-              className="text-xl md:text-2xl font-bold cursor-pointer"
-            >
-              <span className="bg-gradient-to-r from-cosmic-purple to-cosmic-pink bg-clip-text text-transparent">
-                Bagas AN
-              </span>
-            </a>
+        <div
+          aria-hidden
+          className={cn(
+            'absolute inset-0 -z-10 transition-all duration-500',
+            scrolled && !menuOpen
+              ? onInk
+                ? 'bg-ink/88 backdrop-blur-md'
+                : 'bg-paper/88 backdrop-blur-md'
+              : 'bg-transparent'
+          )}
+        />
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
+        <div className="shell flex h-16 items-center justify-between md:h-20">
+          <a href="#top" onClick={(e) => go(e, '#top')} className="label flex items-baseline gap-2 font-medium">
+            <span>BAGAS ADHI N.</span>
+            <span className="text-kunyit" aria-hidden>●</span>
+          </a>
+
+          <nav className="hidden items-center gap-9 md:flex">
+            {NAV_LINKS.map((link) => {
+              const isActive = active === link.href.slice(1);
+              return (
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-gray-300 hover:text-white transition-colors relative group cursor-pointer"
+                  onClick={(e) => go(e, link.href)}
+                  className={cn(
+                    'label relative py-2 transition-opacity duration-200',
+                    isActive ? 'opacity-100' : 'opacity-55 hover:opacity-100'
+                  )}
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cosmic-purple to-cosmic-pink transition-all group-hover:w-full" />
+                  {isActive ? (
+                    <motion.span layoutId="nav-mark" className="absolute -bottom-0.5 left-0 h-px w-full bg-kunyit" />
+                  ) : null}
                 </a>
-              ))}
-              <a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, '#contact')}
-                className="px-6 py-2 rounded-lg bg-gradient-to-r from-cosmic-purple to-cosmic-pink hover:shadow-lg hover:shadow-cosmic-purple/50 transition-all cursor-pointer text-white font-medium"
-              >
-                Contact Me
-              </a>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
-              aria-label="Toggle menu"
+              );
+            })}
+            <a
+              href="#contact"
+              onClick={(e) => go(e, '#contact')}
+              className="label rounded-panel bg-kunyit px-5 py-2.5 font-medium text-ink transition-colors hover:bg-[#F4B747]"
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </nav>
+              Hubungi saya
+            </a>
+          </nav>
+
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            className="label -mr-2 px-2 py-3 md:hidden"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+          >
+            {menuOpen ? 'Tutup' : 'Menu'}
+          </button>
+        </div>
+
+        <div className={cn('relative h-px w-full', scrolled ? 'opacity-100' : 'opacity-0')}>
+          <div className="absolute inset-0 bg-current opacity-15" />
+          <motion.div style={{ scaleX: progress }} className="absolute inset-0 origin-left bg-kunyit" />
+        </div>
       </header>
 
-      {/* Mobile Navigation Overlay */}
-      {isMobileMenuOpen && (
-        <div 
-          className="fixed inset-0 z-40 md:hidden"
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-          
-          {/* Menu Content */}
-          <div 
-            className="absolute top-16 left-0 right-0 bg-space-dark/98 backdrop-blur-xl border-b border-cosmic-purple/20 shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="container mx-auto px-4 py-6 space-y-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="block text-gray-300 hover:text-white hover:bg-white/5 transition-all py-3 px-4 rounded-lg cursor-pointer"
-                >
-                  {link.label}
-                </a>
-              ))}
+      {/* mobile */}
+      <div id="mobile-nav" hidden={!menuOpen} className="fixed inset-0 z-40 bg-ink text-paper md:hidden">
+        <div className="shell flex h-full flex-col justify-between pb-10 pt-24">
+          <nav className="flex flex-col">
+            {NAV_LINKS.map((link, i) => (
               <a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, '#contact')}
-                className="block w-full text-center px-6 py-3 rounded-lg bg-gradient-to-r from-cosmic-purple to-cosmic-pink hover:shadow-lg hover:shadow-cosmic-purple/50 transition-all cursor-pointer text-white font-medium mt-4"
+                key={link.href}
+                href={link.href}
+                onClick={(e) => go(e, link.href)}
+                className="flex items-baseline gap-5 border-b border-paper/12 py-5"
               >
-                Contact Me
+                <span className="label w-6 shrink-0 text-kunyit">{String(i + 1).padStart(2, '0')}</span>
+                <span className="font-display text-3xl font-medium tracking-tightest">{link.label}</span>
               </a>
-            </div>
+            ))}
+            <a
+              href="#contact"
+              onClick={(e) => go(e, '#contact')}
+              className="mt-8 rounded-panel bg-kunyit px-6 py-4 text-center font-mono text-xs uppercase tracking-label text-ink"
+            >
+              Hubungi saya
+            </a>
+          </nav>
+
+          <div className="label space-y-2 opacity-55">
+            <p>{SOCIAL_LINKS.email}</p>
+            <p>Bandung · Jawa Barat · ID</p>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

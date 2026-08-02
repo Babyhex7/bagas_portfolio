@@ -1,5 +1,16 @@
 import type { Config } from "tailwindcss";
 
+/**
+ * Design system: "Record & Voice"
+ *
+ * Two grounds, inverted against each other:
+ *   ink   — warm brown-black, carries the opening statement and the closing invitation
+ *   paper — cool limewash, carries the record (work, toolkit, achievements)
+ *
+ * One accent per ground so the two never compete:
+ *   kunyit (turmeric) lives on ink
+ *   nila   (batik indigo) lives on paper
+ */
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,31 +20,49 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        space: {
-          dark: '#0F172A',
-          darker: '#020617',
-          light: '#1E293B',
+        ink: {
+          DEFAULT: "#17140F",
+          raised: "#211C16",
+          line: "#342D24",
+          muted: "#8B8E85",
         },
-        cosmic: {
-          purple: '#8B5CF6',
-          pink: '#EC4899',
-          blue: '#3B82F6',
+        paper: {
+          DEFAULT: "#E7E9E3",
+          raised: "#DCDFD7",
+          line: "#C6C9C0",
+          muted: "#5E5B54",
+        },
+        nila: {
+          DEFAULT: "#24356F",
+          soft: "#8494CE",
+        },
+        kunyit: {
+          DEFAULT: "#E9A62A",
+          deep: "#B87C12",
         },
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-cosmic': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        'gradient-space': 'linear-gradient(to bottom, #0F172A, #1E293B)',
+      fontFamily: {
+        display: ["var(--font-display)", "ui-sans-serif", "system-ui", "sans-serif"],
+        body: ["var(--font-body)", "Georgia", "serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
+      },
+      letterSpacing: {
+        tightest: "-0.045em",
+        label: "0.16em",
+      },
+      maxWidth: {
+        measure: "62ch",
+      },
+      borderRadius: {
+        panel: "4px",
       },
       animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'spin-slow': 'spin 8s linear infinite',
+        seal: "seal-spin 34s linear infinite",
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
+        "seal-spin": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
         },
       },
     },

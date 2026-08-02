@@ -1,13 +1,17 @@
 export interface Project {
   id: string;
+  /** Product name as shipped, e.g. "Markin" */
+  name: string;
+  /** Client or product suite, e.g. "Duluin" */
+  client: string;
   title: string;
   description: string;
   image: string; // Main image (backward compatibility)
-  images?: string[]; // Multiple screenshots untuk carousel
+  images?: string[]; // Full screenshot set for the viewer
   tags: string[];
-  category: 'web' | 'mobile' | 'ai';
-  demoUrl?: string;
-  githubUrl?: string;
+  category: 'platform' | 'corporate' | 'commerce' | 'health' | 'education';
+  liveUrl: string;
+  year: string;
 }
 
 export interface Skill {

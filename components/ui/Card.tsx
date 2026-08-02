@@ -4,39 +4,28 @@ import { cn } from '@/lib/utils';
 interface CardProps {
   children: React.ReactNode;
   className?: string;
-  hover?: boolean;
+  bordered?: boolean;
 }
 
-export function Card({ children, className, hover = true }: CardProps) {
+/**
+ * A flat panel. No shadow, no gradient, no lift on hover — the system is
+ * built from hairlines and ground inversion, so the panel stays quiet.
+ */
+export function Card({ children, className, bordered = true }: CardProps) {
   return (
     <div
       className={cn(
-        'relative rounded-2xl border border-cosmic-purple/20 bg-space-light/50 backdrop-blur-sm p-6',
-        hover && 'transition-all duration-300 hover:border-cosmic-purple/50 hover:shadow-lg hover:shadow-cosmic-purple/20 hover:-translate-y-1',
-        className
-      )}
-    >
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cosmic-purple/5 to-cosmic-pink/5 pointer-events-none" />
-      <div className="relative z-10">{children}</div>
-    </div>
-  );
-}
-
-interface GlassCardProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
-export function GlassCard({ children, className }: GlassCardProps) {
-  return (
-    <div
-      className={cn(
-        'relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6',
-        'transition-all duration-300 hover:bg-white/10 hover:border-white/20',
+        'relative rounded-panel p-6',
+        bordered && 'border border-paper/12 [.band-paper_&]:border-ink/12',
+        'bg-ink-raised/60 [.band-paper_&]:bg-paper-raised/70',
         className
       )}
     >
       {children}
     </div>
   );
+}
+
+export function GlassCard({ children, className }: CardProps) {
+  return <Card className={className}>{children}</Card>;
 }

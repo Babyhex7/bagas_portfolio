@@ -1,44 +1,42 @@
-// Navigation Links
+// Navigation — mirrors the section order on the home page.
 export const NAV_LINKS = [
-  { href: '#hero', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#achievements', label: 'Achievements' },
+  { href: '#profile', label: 'Profile' },
+  { href: '#work', label: 'Work' },
+  { href: '#toolkit', label: 'Toolkit' },
+  { href: '#record', label: 'Record' },
 ] as const;
 
-// Social Media Links
 export const SOCIAL_LINKS = {
-  github: 'https://github.com/bagasadhinugraha',
+  github: 'https://github.com/Babyhex7',
   linkedin: 'https://linkedin.com/in/bagasadhinugraha',
   email: 'bagasnv@upi.edu',
   whatsapp: '+6285885725027',
+  whatsappNumber: '6285885725027',
 } as const;
 
-// Site Metadata
 export const SITE_CONFIG = {
   name: 'Bagas Adhi Nugraha',
-  title: 'Bagas AN - Fullstack Developer & AI Enthusiast',
-  description: 'Portfolio website of Bagas Adhi Nugraha - Fullstack Developer specializing in React.js, Node.js, Flutter, and AI Development',
+  title: 'Bagas Adhi Nugraha — Fullstack Engineer',
+  description:
+    'Fullstack engineer di Bandung. Membangun produk untuk Duluin, BNI Ventures, dan lini bisnis lain.',
   url: 'https://bagasadhinugraha.com',
   author: {
     name: 'Bagas Adhi Nugraha',
-    title: 'Fullstack Developer & AI Enthusiast',
-    location: 'Bandung, Indonesia',
+    title: 'Fullstack Engineer',
+    location: 'Bandung, Jawa Barat, Indonesia',
     university: 'Universitas Pendidikan Indonesia',
     program: 'S1 Rekayasa Perangkat Lunak',
   },
 } as const;
 
-// Color Theme Classes
-export const COLORS = {
-  'cosmic-purple': 'bg-cosmic-purple text-cosmic-purple border-cosmic-purple',
-  'cosmic-pink': 'bg-cosmic-pink text-cosmic-pink border-cosmic-pink',
-  'cosmic-blue': 'bg-cosmic-blue text-cosmic-blue border-cosmic-blue',
-  'green-500': 'bg-green-500 text-green-500 border-green-500',
-} as const;
+// Hard numbers used in the hero manifest.
+export const MANIFEST = [
+  { value: '16', label: 'Produk terkirim' },
+  { value: '02', label: 'HKI terdaftar' },
+  { value: '09', label: 'Klien nyata' },
+  { value: '25+', label: 'Sesi berbicara' },
+] as const;
 
-// Breakpoints
 export const BREAKPOINTS = {
   sm: 640,
   md: 768,
