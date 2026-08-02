@@ -9,31 +9,35 @@ function shots(folder: string, count: number): string[] {
 
 export const projects: Project[] = [
   {
-    id: 'markin',
-    name: 'Markin',
-    client: 'Duluin',
-    title: 'Markin — Duluin',
-    description:
-      'Dasbor presensi untuk ekosistem Duluin: clock-in/out, rekap kehadiran per tim, dan laporan real-time yang dipakai HR setiap hari.',
-    image: '/assets/images/markin/shot-01.png',
-    images: shots('markin', 10),
-    tags: ['Web App', 'Dashboard', 'HR Tech'],
-    category: 'platform',
-    liveUrl: 'https://markin.duluin.com/',
-    year: '2025',
-  },
-  {
     id: 'workin',
     name: 'Workin',
     client: 'Duluin',
     title: 'Workin — Duluin',
-    description:
-      'Platform manajemen tenaga kerja untuk menyusun jadwal shift, memantau produktivitas tim, dan mengoordinasikan operasional lintas cabang.',
+    description: {
+      en: 'Enterprise HRMS built on microservices, serving 13,000+ active users. AI-powered facial recognition attendance, plus leave, overtime, and expense automation.',
+      id: 'HRMS enterprise berbasis microservices untuk 13.000+ pengguna aktif. Presensi wajah berbasis AI, plus otomasi cuti, lembur, dan reimbursement.',
+    },
     image: '/assets/images/workin/shot-01.png',
     images: shots('workin', 16),
-    tags: ['Web App', 'Dashboard', 'Workforce'],
+    tags: ['Golang (Gin)', 'Microservices', '13K+ Users'],
     category: 'platform',
     liveUrl: 'https://workin.duluin.com/',
+    year: '2025',
+  },
+  {
+    id: 'markin',
+    name: 'Markin',
+    client: 'Duluin',
+    title: 'Markin — Duluin',
+    description: {
+      en: "Legally compliant e-signature platform integrated with Xignature, Indonesia's certified provider (PSrE). Adopted by BNI Life and BNI Ventures for secure digital signing.",
+      id: 'Platform tanda tangan elektronik berkekuatan hukum, terintegrasi Xignature (PSrE resmi Indonesia). Dipakai BNI Life dan BNI Ventures untuk penandatanganan digital yang aman.',
+    },
+    image: '/assets/images/markin/shot-01.png',
+    images: shots('markin', 10),
+    tags: ['E-Signature', 'Xignature API', 'ISO 27001'],
+    category: 'platform',
+    liveUrl: 'https://markin.duluin.com/',
     year: '2025',
   },
   {
@@ -41,11 +45,13 @@ export const projects: Project[] = [
     name: 'Margin',
     client: 'Duluin',
     title: 'Margin — Duluin',
-    description:
-      'Dasbor keuangan internal: pelacakan transaksi, alur persetujuan berjenjang, dan laporan finansial yang bisa dibaca dalam satu tampilan.',
+    description: {
+      en: 'Multi-company accounting platform for 10+ partner businesses — invoicing, payments, auto-journaling, bank reconciliation, and tax reporting in one system.',
+      id: 'Platform akuntansi multi-perusahaan untuk 10+ mitra bisnis — invoicing, pembayaran, auto-journaling, rekonsiliasi bank, dan laporan pajak dalam satu sistem.',
+    },
     image: '/assets/images/margin/shot-01.png',
     images: shots('margin', 18),
-    tags: ['Web App', 'Dashboard', 'Finance'],
+    tags: ['Accounting', 'Multi-tenant', 'Dashboard'],
     category: 'platform',
     liveUrl: 'https://margin.duluin.com/',
     year: '2025',
@@ -55,8 +61,10 @@ export const projects: Project[] = [
     name: 'Satu',
     client: 'Duluin',
     title: 'Satu — Duluin',
-    description:
-      'Portal HR terpadu yang menyatukan data karyawan, cuti, dan administrasi lintas produk Duluin ke dalam satu sistem masuk.',
+    description: {
+      en: 'Unified employee self-service portal — leave, admin requests, and company-wide announcements in one login across the Duluin ecosystem.',
+      id: 'Portal self-service karyawan terpadu — cuti, permintaan admin, dan pengumuman perusahaan dalam satu login di seluruh ekosistem Duluin.',
+    },
     image: '/assets/images/satu_digital_web/shot-01.png',
     images: shots('satu_digital_web', 14),
     tags: ['Web App', 'Dashboard', 'HR Tech'],
@@ -69,11 +77,13 @@ export const projects: Project[] = [
     name: 'Credo',
     client: 'Duluin',
     title: 'Credo — Duluin',
-    description:
-      'Sistem penilaian kelayakan untuk proses persetujuan internal — dirancang agar keputusan yang biasanya lambat jadi terukur dan cepat.',
+    description: {
+      en: 'Eligibility scoring engine for internal approval workflows — turning what used to be a slow manual call into a fast, measurable decision.',
+      id: 'Mesin penilaian kelayakan untuk alur persetujuan internal — mengubah keputusan yang biasanya lambat jadi cepat dan terukur.',
+    },
     image: '/assets/images/credo/shot-01.png',
     images: shots('credo', 9),
-    tags: ['Web App', 'Scoring Engine', 'Dashboard'],
+    tags: ['Scoring Engine', 'Web App', 'Dashboard'],
     category: 'platform',
     liveUrl: 'https://credo.duluin.com/',
     year: '2025',
@@ -83,11 +93,13 @@ export const projects: Project[] = [
     name: 'Launchpad',
     client: 'Duluin',
     title: 'Launchpad — Duluin',
-    description:
-      'Portal onboarding: titik masuk pertama pengguna baru ke ekosistem Duluin, dari registrasi sampai aktivasi akun.',
+    description: {
+      en: 'Onboarding portal — the first thing a new user touches in the Duluin ecosystem, from registration through account activation.',
+      id: 'Portal onboarding — titik masuk pertama pengguna baru ke ekosistem Duluin, dari registrasi sampai aktivasi akun.',
+    },
     image: '/assets/images/lauchpad/shot-01.png',
     images: shots('lauchpad', 5),
-    tags: ['Web App', 'Auth Flow', 'Onboarding'],
+    tags: ['Auth Flow', 'Onboarding', 'Web App'],
     category: 'platform',
     liveUrl: 'https://launchpad.duluin.com/',
     year: '2025',
@@ -97,11 +109,13 @@ export const projects: Project[] = [
     name: 'Assessment',
     client: 'Duluin',
     title: 'Assessment — Duluin',
-    description:
-      'Alat asesmen kandidat untuk proses rekrutmen: soal terstruktur, penilaian otomatis, hasil yang langsung siap direview tim HR.',
+    description: {
+      en: 'Candidate assessment tool for recruitment — structured test flows, automated scoring, results ready for HR to review immediately.',
+      id: 'Alat asesmen kandidat untuk rekrutmen — alur tes terstruktur, penilaian otomatis, hasil langsung siap direview tim HR.',
+    },
     image: '/assets/images/duluin_assesstment_web/shot-01.png',
     images: shots('duluin_assesstment_web', 2),
-    tags: ['Web App', 'Recruitment', 'Forms'],
+    tags: ['Recruitment', 'Forms', 'Web App'],
     category: 'platform',
     liveUrl: 'https://assessment.duluin.com/candidate',
     year: '2025',
@@ -111,11 +125,13 @@ export const projects: Project[] = [
     name: 'Speak Up',
     client: 'Duluin',
     title: 'Speak Up — Duluin',
-    description:
-      'Kanal pelaporan internal untuk karyawan — menyampaikan masukan atau keluhan langsung ke manajemen tanpa lewat birokrasi berlapis.',
+    description: {
+      en: 'Internal reporting channel — employees raise feedback or concerns straight to management, without layers of bureaucracy in between.',
+      id: 'Kanal pelaporan internal — karyawan menyampaikan masukan atau keluhan langsung ke manajemen tanpa birokrasi berlapis.',
+    },
     image: '/assets/images/speak_up_duluin_web/shot-01.png',
     images: shots('speak_up_duluin_web', 6),
-    tags: ['Web App', 'Feedback Channel'],
+    tags: ['Feedback Channel', 'Web App'],
     category: 'platform',
     liveUrl: 'https://speakup.duluin.com/',
     year: '2025',
@@ -125,11 +141,13 @@ export const projects: Project[] = [
     name: 'BNI Ventures',
     client: 'BNI Ventures',
     title: 'BNI Ventures',
-    description:
-      'Situs korporat unit modal ventura BNI — portofolio investasi, tesis, dan profil tim untuk audiens founder dan investor.',
+    description: {
+      en: "BNI's corporate venture arm, online — investment portfolio, thesis, and team profiles built for founders and investors.",
+      id: 'Situs korporat unit modal ventura BNI — portofolio investasi, tesis, dan profil tim untuk audiens founder dan investor.',
+    },
     image: '/assets/images/bni_ventures/shot-01.png',
     images: shots('bni_ventures', 14),
-    tags: ['Corporate Site', 'Portfolio', 'CMS'],
+    tags: ['Corporate Site', 'Next.js', 'CMS'],
     category: 'corporate',
     liveUrl: 'https://bniventures.co.id/id',
     year: '2025',
@@ -139,8 +157,10 @@ export const projects: Project[] = [
     name: 'Global Nararya',
     client: 'Global Nararya',
     title: 'Global Nararya',
-    description:
-      'Situs profil perusahaan lengkap dengan kanal berita dan publikasi, dibangun agar tim internal bisa memperbarui kontennya sendiri.',
+    description: {
+      en: "A full corporate profile with a news and publications channel, built so the client's own team can keep it updated.",
+      id: 'Situs profil perusahaan lengkap dengan kanal berita dan publikasi, dibangun agar tim internal bisa memperbarui kontennya sendiri.',
+    },
     image: '/assets/images/global_nararya_web/shot-01.png',
     images: shots('global_nararya_web', 5),
     tags: ['Corporate Site', 'News CMS'],
@@ -153,8 +173,10 @@ export const projects: Project[] = [
     name: 'Riline Group',
     client: 'Riline Group',
     title: 'Riline Group',
-    description:
-      'Situs korporat untuk grup usaha multi-lini bisnis, disusun agar setiap unit usaha tetap mudah ditemukan dari satu pintu masuk.',
+    description: {
+      en: 'Corporate site for a multi-line business group, structured so every business unit stays one click from the front door.',
+      id: 'Situs korporat untuk grup usaha multi-lini bisnis, disusun agar setiap unit usaha tetap mudah ditemukan dari satu pintu masuk.',
+    },
     image: '/assets/images/rilline_group_web/shot-01.png',
     images: shots('rilline_group_web', 5),
     tags: ['Corporate Site', 'Multi-brand'],
@@ -167,8 +189,10 @@ export const projects: Project[] = [
     name: 'Baksya',
     client: 'Baksya',
     title: 'Baksya',
-    description:
-      'Situs profil brand dengan identitas visual ringkas dan navigasi satu halaman untuk memperkenalkan layanan inti.',
+    description: {
+      en: 'A brand site with a tight visual identity and single-page navigation, built to introduce the core service fast.',
+      id: 'Situs profil brand dengan identitas visual ringkas dan navigasi satu halaman untuk memperkenalkan layanan inti.',
+    },
     image: '/assets/images/baksya_web/shot-01.png',
     images: shots('baksya_web', 6),
     tags: ['Brand Site', 'One-Page'],
@@ -181,8 +205,10 @@ export const projects: Project[] = [
     name: 'Sentrocare',
     client: 'Sentrocare',
     title: 'Sentrocare',
-    description:
-      'Situs layanan kesehatan yang menampilkan informasi layanan, jadwal praktik, dan kanal kontak untuk pasien.',
+    description: {
+      en: 'A healthcare service site covering service info, practice schedules, and patient contact channels.',
+      id: 'Situs layanan kesehatan yang menampilkan informasi layanan, jadwal praktik, dan kanal kontak untuk pasien.',
+    },
     image: '/assets/images/sentrocare_web/shot-01.png',
     images: shots('sentrocare_web', 3),
     tags: ['Healthcare', 'Marketing Site'],
@@ -195,11 +221,13 @@ export const projects: Project[] = [
     name: 'Vyl Bouquet',
     client: 'Vyl Bouquet',
     title: 'Vyl Bouquet',
-    description:
-      'Toko bunga online — katalog produk, varian buket, dan alur pemesanan yang ringkas untuk pelanggan ritel.',
+    description: {
+      en: 'A digital florist storefront — product catalog, bouquet variants, and a lean checkout flow, contributing to a 35% lift in conversion.',
+      id: 'Toko bunga online — katalog produk, varian buket, dan alur checkout ringkas, berkontribusi pada peningkatan konversi 35%.',
+    },
     image: '/assets/images/vyl_bouquet_web/shot-01.png',
     images: shots('vyl_bouquet_web', 3),
-    tags: ['E-Commerce', 'Catalog'],
+    tags: ['E-Commerce', 'Next.js', '+35% Conversion'],
     category: 'commerce',
     liveUrl: 'https://vylbouquet.com/',
     year: '2024',
@@ -209,8 +237,10 @@ export const projects: Project[] = [
     name: 'Edumindgrow',
     client: 'Edumindgrow',
     title: 'Edumindgrow',
-    description:
-      'Platform belajar dengan portal login murid, materi terstruktur, dan halaman publik untuk pendaftaran peserta baru.',
+    description: {
+      en: 'A learning platform with a student login portal, structured course material, and a public enrollment page.',
+      id: 'Platform belajar dengan portal login murid, materi terstruktur, dan halaman publik untuk pendaftaran peserta baru.',
+    },
     image: '/assets/images/edumind_web/shot-01.png',
     images: shots('edumind_web', 5),
     tags: ['EdTech', 'Auth Portal'],
@@ -223,8 +253,10 @@ export const projects: Project[] = [
     name: 'Nawa Multiparts',
     client: 'Nawa Multiparts',
     title: 'Nawa Multiparts',
-    description:
-      'Situs korporat untuk distributor suku cadang, lengkap dengan kanal berita dan artikel untuk komunikasi ke mitra dan pelanggan.',
+    description: {
+      en: 'A corporate site for an auto parts distributor, with a news and articles channel for partner and customer communication.',
+      id: 'Situs korporat untuk distributor suku cadang, lengkap dengan kanal berita dan artikel untuk komunikasi ke mitra dan pelanggan.',
+    },
     image: '/assets/images/nawamultiparts_web/shot-01.png',
     images: shots('nawamultiparts_web', 5),
     tags: ['Corporate Site', 'News CMS'],

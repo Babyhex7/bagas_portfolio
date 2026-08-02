@@ -4,8 +4,41 @@ import { useCallback, useEffect, useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/constants';
 import { cn } from '@/lib/utils';
+import { useLocale } from '@/components/providers/LocaleProvider';
+import type { Locale } from '@/lib/i18n/types';
+
+function LocaleSwitch({ onInk }: { onInk: boolean }) {
+  const { locale, setLocale } = useLocale();
+  const options: Locale[] = ['en', 'id'];
+
+  return (
+    <div
+      className={cn(
+        'label flex items-center rounded-full border p-0.5',
+        onInk ? 'border-paper/25' : 'border-ink/20'
+      )}
+      role="group"
+      aria-label="Language"
+    >
+      {options.map((opt) => (
+        <button
+          key={opt}
+          onClick={() => setLocale(opt)}
+          aria-pressed={locale === opt}
+          className={cn(
+            'rounded-full px-2.5 py-1 transition-colors',
+            locale === opt ? 'bg-kunyit text-ink' : 'opacity-55 hover:opacity-100'
+          )}
+        >
+          {opt.toUpperCase()}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export function Header() {
+  const { dict } = useLocale();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [band, setBand] = useState<'ink' | 'paper'>('ink');
@@ -82,13 +115,13 @@ export function Header() {
           )}
         />
 
-        <div className="shell flex h-16 items-center justify-between md:h-20">
+        <div className="shell flex h-16 items-center justify-between gap-4 md:h-20">
           <a href="#top" onClick={(e) => go(e, '#top')} className="label flex items-baseline gap-2 font-medium">
             <span>BAGAS ADHI N.</span>
             <span className="text-kunyit" aria-hidden>●</span>
           </a>
 
-          <nav className="hidden items-center gap-9 md:flex">
+          <nav className="hidden items-center gap-8 md:flex">
             {NAV_LINKS.map((link) => {
               const isActive = active === link.href.slice(1);
               return (
@@ -101,30 +134,34 @@ export function Header() {
                     isActive ? 'opacity-100' : 'opacity-55 hover:opacity-100'
                   )}
                 >
-                  {link.label}
+                  {dict.nav[link.key]}
                   {isActive ? (
                     <motion.span layoutId="nav-mark" className="absolute -bottom-0.5 left-0 h-px w-full bg-kunyit" />
                   ) : null}
                 </a>
               );
             })}
+            <LocaleSwitch onInk={onInk} />
             <a
               href="#contact"
               onClick={(e) => go(e, '#contact')}
               className="label rounded-panel bg-kunyit px-5 py-2.5 font-medium text-ink transition-colors hover:bg-[#F4B747]"
             >
-              Hubungi saya
+              {dict.nav.cta}
             </a>
           </nav>
 
-          <button
-            onClick={() => setMenuOpen((v) => !v)}
-            className="label -mr-2 px-2 py-3 md:hidden"
-            aria-expanded={menuOpen}
-            aria-controls="mobile-nav"
-          >
-            {menuOpen ? 'Tutup' : 'Menu'}
-          </button>
+          <div className="flex items-center gap-3 md:hidden">
+            <LocaleSwitch onInk={onInk} />
+            <button
+              onClick={() => setMenuOpen((v) => !v)}
+              className="label px-2 py-3"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav"
+            >
+              {menuOpen ? dict.nav.menuClose : dict.nav.menuOpen}
+            </button>
+          </div>
         </div>
 
         <div className={cn('relative h-px w-full', scrolled ? 'opacity-100' : 'opacity-0')}>
@@ -145,7 +182,7 @@ export function Header() {
                 className="flex items-baseline gap-5 border-b border-paper/12 py-5"
               >
                 <span className="label w-6 shrink-0 text-kunyit">{String(i + 1).padStart(2, '0')}</span>
-                <span className="font-display text-3xl font-medium tracking-tightest">{link.label}</span>
+                <span className="font-display text-3xl font-medium tracking-tightest">{dict.nav[link.key]}</span>
               </a>
             ))}
             <a
@@ -153,7 +190,7 @@ export function Header() {
               onClick={(e) => go(e, '#contact')}
               className="mt-8 rounded-panel bg-kunyit px-6 py-4 text-center font-mono text-xs uppercase tracking-label text-ink"
             >
-              Hubungi saya
+              {dict.nav.cta}
             </a>
           </nav>
 

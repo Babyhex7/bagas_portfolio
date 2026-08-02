@@ -3,18 +3,21 @@
 import { motion } from 'framer-motion';
 import { Seal } from '@/components/ui/Seal';
 import { ButtonLink } from '@/components/ui/Button';
-import { MANIFEST } from '@/lib/constants';
+import { MANIFEST, CV_FILE_URL } from '@/lib/constants';
+import { useLocale } from '@/components/providers/LocaleProvider';
 
 const clients = [
   'Duluin',
   'BNI Ventures',
+  'BRIN',
   'Global Nararya',
   'Riline Group',
   'Sentrocare',
-  'Edumindgrow',
 ];
 
 export function Hero() {
+  const { dict } = useLocale();
+
   return (
     <section
       id="top"
@@ -41,7 +44,7 @@ export function Hero() {
               transition={{ duration: 0.6 }}
               className="label"
             >
-              Fullstack Engineer · Bandung, ID
+              {dict.hero.eyebrow}
             </motion.p>
 
             <h1 className="mt-6 font-display text-[clamp(2.75rem,8vw,6.75rem)] font-semibold leading-[0.94] tracking-tightest">
@@ -51,7 +54,7 @@ export function Hero() {
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                 className="block"
               >
-                Bagas Adhi
+                {dict.hero.name[0]}
               </motion.span>
               <motion.span
                 initial={{ clipPath: 'inset(0 0 100% 0)' }}
@@ -59,7 +62,7 @@ export function Hero() {
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
                 className="block italic text-kunyit"
               >
-                Nugraha.
+                {dict.hero.name[1]}
               </motion.span>
             </h1>
 
@@ -69,10 +72,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.5 }}
               className="mt-8 max-w-measure text-lg leading-relaxed text-paper/70 md:text-xl"
             >
-              Saya membangun perangkat lunak yang benar-benar dipakai —
-              dasbor SaaS untuk ekosistem <span className="text-paper">Duluin</span>, situs korporat untuk{' '}
-              <span className="text-paper">BNI Ventures</span>, dan produk lain
-              lintas industri: kesehatan, edukasi, hingga ritel.
+              {dict.hero.bio}
             </motion.p>
 
             <motion.div
@@ -82,10 +82,13 @@ export function Hero() {
               className="mt-10 flex flex-wrap items-center gap-4"
             >
               <ButtonLink href="#work" variant="accent" size="lg">
-                Lihat pekerjaan
+                {dict.hero.ctaWork}
               </ButtonLink>
               <ButtonLink href="#contact" variant="ghost" size="lg">
-                Hubungi saya
+                {dict.hero.ctaContact}
+              </ButtonLink>
+              <ButtonLink href={CV_FILE_URL} target="_blank" rel="noopener noreferrer" variant="ghost" size="lg">
+                {dict.hero.ctaCV}
               </ButtonLink>
             </motion.div>
           </div>
@@ -106,9 +109,9 @@ export function Hero() {
         <div className="shell grid gap-8 py-8 md:grid-cols-2 md:gap-4">
           <dl className="grid grid-cols-4 gap-4">
             {MANIFEST.map((m) => (
-              <div key={m.label}>
+              <div key={m.key}>
                 <dt className="font-display text-2xl font-semibold tabular-nums md:text-3xl">{m.value}</dt>
-                <dd className="label mt-1 opacity-45">{m.label}</dd>
+                <dd className="label mt-1 opacity-45">{dict.manifest[m.key]}</dd>
               </div>
             ))}
           </dl>

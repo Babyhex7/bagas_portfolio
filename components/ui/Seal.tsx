@@ -3,17 +3,17 @@ import { cn } from '@/lib/utils';
 /**
  * The registry seal — the signature element.
  *
- * Two of Bagas' products are registered as Indonesian intellectual property
- * (HKI) — the rarest line on this CV. It gets the one loud mark on the page:
- * a struck seal that turns slowly, in turmeric, over the ink ground. It
- * appears exactly once, in the hero.
+ * Three of Bagas' products are registered as Indonesian intellectual property
+ * (IP rights) — the rarest line on this CV. It gets the one loud mark on the
+ * page: a struck seal that turns slowly, in turmeric, over the ink ground.
+ * It appears exactly once, in the hero.
  */
 export function Seal({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 220 220"
       role="img"
-      aria-label="Two works registered as Indonesian intellectual property, 2025"
+      aria-label="Three works registered as Indonesian intellectual property"
       className={cn('text-kunyit', className)}
     >
       <defs>
@@ -36,7 +36,7 @@ export function Seal({ className }: { className?: string }) {
           style={{ fontFamily: 'var(--font-mono)', fontWeight: 500 }}
         >
           <textPath href="#seal-ring" startOffset="0">
-            HAK KEKAYAAN INTELEKTUAL · TERDAFTAR 2025 ·
+            REGISTERED INTELLECTUAL PROPERTY · INDONESIA ·
           </textPath>
         </text>
       </g>
@@ -49,7 +49,7 @@ export function Seal({ className }: { className?: string }) {
         fontSize="46"
         style={{ fontFamily: 'var(--font-display)', fontWeight: 600 }}
       >
-        02
+        03
       </text>
       <text
         x="110"
@@ -61,7 +61,7 @@ export function Seal({ className }: { className?: string }) {
         opacity="0.75"
         style={{ fontFamily: 'var(--font-mono)' }}
       >
-        HKI
+        IP RIGHTS
       </text>
     </svg>
   );

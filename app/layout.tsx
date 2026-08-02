@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Newsreader, JetBrains_Mono } from 'next/font/googl
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { LocaleProvider } from '@/components/providers/LocaleProvider';
 
 const display = Bricolage_Grotesque({
   subsets: ['latin'],
@@ -25,23 +26,27 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bagasadhinugraha.com'),
-  title: 'Bagas Adhi Nugraha — Fullstack Engineer',
+  title: 'Bagas Adhi Nugraha — Software Engineer & AI Engineer',
   description:
-    'Fullstack engineer di Bandung. Membangun produk untuk Duluin, BNI Ventures, dan lini bisnis lain — dari dasbor internal sampai situs korporat.',
+    'Software Engineer & AI Engineer with 2+ years shipping production systems in Golang, Laravel, FastAPI, NestJS, Next.js, and Flutter. 3 registered IP rights, 13,000+ active users served across enterprise HRMS, fintech, and AI platforms.',
   keywords: [
     'Bagas Adhi Nugraha',
-    'fullstack developer',
-    'Duluin',
-    'web developer Bandung',
-    'portfolio',
+    'Software Engineer',
+    'AI Engineer',
+    'Golang Developer',
+    'Fullstack Engineer Indonesia',
+    'Next.js Developer',
+    'Flutter Developer Bandung',
+    'Backend Engineer Indonesia',
+    'RAG AI Engineer',
   ],
   authors: [{ name: 'Bagas Adhi Nugraha' }],
   openGraph: {
-    title: 'Bagas Adhi Nugraha — Fullstack Engineer',
+    title: 'Bagas Adhi Nugraha — Software Engineer & AI Engineer',
     description:
-      '14 produk terkirim untuk klien nyata — dasbor SaaS, situs korporat, e-commerce, hingga platform edukasi.',
+      '2+ years in production. 3 registered IP rights. 13,000+ active users served. Golang, Next.js, FastAPI, Flutter — systems built to run, not to demo.',
     type: 'website',
-    locale: 'id_ID',
+    locale: 'en_US',
   },
 };
 
@@ -51,21 +56,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id">
+    <html lang="en">
       <body
         className={`${display.variable} ${body.variable} ${mono.variable} font-body`}
       >
-        <a
-          href="#main"
-          className="label sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-kunyit focus:px-4 focus:py-3 focus:text-ink"
-        >
-          Skip to content
-        </a>
-        <Header />
-        <main id="main" className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+        <LocaleProvider>
+          <a
+            href="#main"
+            className="label sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-kunyit focus:px-4 focus:py-3 focus:text-ink"
+          >
+            Skip to content
+          </a>
+          <Header />
+          <main id="main" className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+        </LocaleProvider>
       </body>
     </html>
   );

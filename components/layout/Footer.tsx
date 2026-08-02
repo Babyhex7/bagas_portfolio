@@ -1,4 +1,7 @@
+'use client';
+
 import { SOCIAL_LINKS, SITE_CONFIG } from '@/lib/constants';
+import { useLocale } from '@/components/providers/LocaleProvider';
 
 const links = [
   { href: 'https://github.com/Babyhex7', label: 'GitHub' },
@@ -8,6 +11,7 @@ const links = [
 ];
 
 export function Footer() {
+  const { dict } = useLocale();
   const year = new Date().getFullYear();
 
   return (
@@ -17,7 +21,7 @@ export function Footer() {
           <div>
             <p className="label opacity-45">{SITE_CONFIG.author.location}</p>
             <p className="mt-3 max-w-md font-display text-2xl font-medium leading-snug tracking-tightest">
-              Selalu terbuka untuk proyek berikutnya.
+              {dict.footer.tagline}
             </p>
           </div>
 
@@ -39,10 +43,10 @@ export function Footer() {
         <hr className="rule my-8" />
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="label opacity-40">
+          <p className="label opacity-40" suppressHydrationWarning>
             © {year} {SITE_CONFIG.author.name}
           </p>
-          <p className="label opacity-40">Dibangun dengan Next.js &amp; Tailwind CSS</p>
+          <p className="label opacity-40">{dict.footer.builtWith}</p>
         </div>
       </div>
     </footer>

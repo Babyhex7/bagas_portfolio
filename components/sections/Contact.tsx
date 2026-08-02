@@ -4,22 +4,25 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Section } from '@/components/ui/Section';
 import { SOCIAL_LINKS } from '@/lib/constants';
+import { useLocale } from '@/components/providers/LocaleProvider';
 
 const fieldClass =
-  'w-full border-b border-ink/25 bg-transparent py-3 font-body text-lg placeholder:text-ink/35 focus:border-nila focus:outline-none';
+  'w-full border-b border-paper/25 bg-transparent py-3 font-body text-lg placeholder:text-paper/35 focus:border-kunyit focus:outline-none';
 
 export function Contact() {
+  const { dict } = useLocale();
+  const c = dict.contact;
   const [formData, setFormData] = useState({ name: '', subject: '', message: '' });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const whatsappMessage = `*Halo, saya ingin menghubungi Anda*
+    const whatsappMessage = `*${c.title}*
 
-*Nama:* ${formData.name}
-*Perihal:* ${formData.subject}
+*${c.fields.name}:* ${formData.name}
+*${c.fields.subject}:* ${formData.subject}
 
-*Pesan:*
+*${c.fields.message}:*
 ${formData.message}`;
 
     const whatsappUrl = `https://wa.me/${SOCIAL_LINKS.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
@@ -34,39 +37,39 @@ ${formData.message}`;
   return (
     <Section
       id="contact"
-      band="paper"
-      index="05"
-      label="Contact"
+      band="ink"
+      index="06"
+      label={c.label}
       meta={[SOCIAL_LINKS.email, 'Bandung, ID']}
-      title="Punya proyek berikutnya?"
-      lede="Isi form ini dan pesannya langsung terformat ke WhatsApp saya — atau hubungi lewat kanal di bawah."
+      title={c.title}
+      lede={c.lede}
     >
       <div className="grid gap-14 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
         <div className="space-y-8">
-          <a href={`mailto:${SOCIAL_LINKS.email}`} className="block border-t border-ink/15 pt-4">
-            <p className="label opacity-45">Email</p>
+          <a href={`mailto:${SOCIAL_LINKS.email}`} className="block border-t border-paper/15 pt-4">
+            <p className="label opacity-45">{c.channels.email}</p>
             <p className="mt-1 font-display text-xl font-medium">{SOCIAL_LINKS.email}</p>
           </a>
           <a
             href={`https://wa.me/${SOCIAL_LINKS.whatsappNumber}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="block border-t border-ink/15 pt-4"
+            className="block border-t border-paper/15 pt-4"
           >
-            <p className="label opacity-45">WhatsApp</p>
+            <p className="label opacity-45">{c.channels.whatsapp}</p>
             <p className="mt-1 font-display text-xl font-medium">{SOCIAL_LINKS.whatsapp}</p>
           </a>
           <a
             href={SOCIAL_LINKS.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="block border-t border-ink/15 pt-4"
+            className="block border-t border-paper/15 pt-4"
           >
-            <p className="label opacity-45">GitHub</p>
+            <p className="label opacity-45">{c.channels.github}</p>
             <p className="mt-1 font-display text-xl font-medium">Babyhex7</p>
           </a>
-          <div className="border-t border-ink/15 pt-4">
-            <p className="label opacity-45">Lokasi</p>
+          <div className="border-t border-paper/15 pt-4">
+            <p className="label opacity-45">{c.channels.location}</p>
             <p className="mt-1 font-display text-xl font-medium">Bandung, Jawa Barat</p>
           </div>
         </div>
@@ -74,7 +77,7 @@ ${formData.message}`;
         <form onSubmit={handleSubmit} className="space-y-8">
           <div>
             <label htmlFor="name" className="label opacity-55">
-              Nama
+              {c.fields.name}
             </label>
             <input
               type="text"
@@ -83,14 +86,14 @@ ${formData.message}`;
               value={formData.name}
               onChange={handleChange}
               required
-              placeholder="Nama Anda"
+              placeholder={c.placeholders.name}
               className={`${fieldClass} mt-2`}
             />
           </div>
 
           <div>
             <label htmlFor="subject" className="label opacity-55">
-              Perihal
+              {c.fields.subject}
             </label>
             <input
               type="text"
@@ -99,14 +102,14 @@ ${formData.message}`;
               value={formData.subject}
               onChange={handleChange}
               required
-              placeholder="Tentang apa ini?"
+              placeholder={c.placeholders.subject}
               className={`${fieldClass} mt-2`}
             />
           </div>
 
           <div>
             <label htmlFor="message" className="label opacity-55">
-              Pesan
+              {c.fields.message}
             </label>
             <textarea
               id="message"
@@ -115,13 +118,13 @@ ${formData.message}`;
               onChange={handleChange}
               required
               rows={4}
-              placeholder="Ceritakan proyeknya..."
+              placeholder={c.placeholders.message}
               className={`${fieldClass} mt-2 resize-none`}
             />
           </div>
 
-          <Button type="submit" variant="solid" size="lg" className="w-full sm:w-auto">
-            Kirim lewat WhatsApp
+          <Button type="submit" variant="accent" size="lg" className="w-full sm:w-auto">
+            {c.submit}
           </Button>
         </form>
       </div>

@@ -1,3 +1,5 @@
+import type { LocalizedText } from '@/lib/i18n/types';
+
 export interface Project {
   id: string;
   /** Product name as shipped, e.g. "Markin" */
@@ -5,7 +7,7 @@ export interface Project {
   /** Client or product suite, e.g. "Duluin" */
   client: string;
   title: string;
-  description: string;
+  description: LocalizedText;
   image: string; // Main image (backward compatibility)
   images?: string[]; // Full screenshot set for the viewer
   tags: string[];
@@ -24,9 +26,19 @@ export interface Skill {
 
 export interface Achievement {
   id: string;
-  title: string;
-  description: string;
+  title: LocalizedText;
+  description: LocalizedText;
   date: string;
   type: 'hki' | 'speaking' | 'award' | 'certification';
   image?: string;
+}
+
+export interface ExperienceEntry {
+  id: string;
+  role: LocalizedText;
+  company: string;
+  employmentType: LocalizedText;
+  start: string;
+  end: string | null; // null = present
+  highlights: LocalizedText[];
 }

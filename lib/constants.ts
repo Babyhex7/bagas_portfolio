@@ -1,41 +1,44 @@
-// Navigation — mirrors the section order on the home page.
+// Navigation — mirrors the section order on the home page. `key` maps to dict.nav[key].
 export const NAV_LINKS = [
-  { href: '#profile', label: 'Profile' },
-  { href: '#work', label: 'Work' },
-  { href: '#toolkit', label: 'Toolkit' },
-  { href: '#record', label: 'Record' },
+  { href: '#profile', key: 'profile' },
+  { href: '#work', key: 'work' },
+  { href: '#experience', key: 'experience' },
+  { href: '#toolkit', key: 'toolkit' },
+  { href: '#record', key: 'record' },
 ] as const;
 
 export const SOCIAL_LINKS = {
   github: 'https://github.com/Babyhex7',
   linkedin: 'https://linkedin.com/in/bagasadhinugraha',
-  email: 'bagasnv@upi.edu',
+  email: 'bagasadhinugraha6@gmail.com',
   whatsapp: '+6285885725027',
   whatsappNumber: '6285885725027',
 } as const;
 
 export const SITE_CONFIG = {
   name: 'Bagas Adhi Nugraha',
-  title: 'Bagas Adhi Nugraha — Fullstack Engineer',
+  title: 'Bagas Adhi Nugraha — Software Engineer & AI Engineer',
   description:
-    'Fullstack engineer di Bandung. Membangun produk untuk Duluin, BNI Ventures, dan lini bisnis lain.',
+    'Software Engineer & AI Engineer building production systems in Golang, Next.js, FastAPI, and Flutter — 3 registered IP rights, 13,000+ active users served.',
   url: 'https://bagasadhinugraha.com',
   author: {
     name: 'Bagas Adhi Nugraha',
-    title: 'Fullstack Engineer',
+    title: 'Software Engineer & AI Engineer',
     location: 'Bandung, Jawa Barat, Indonesia',
     university: 'Universitas Pendidikan Indonesia',
-    program: 'S1 Rekayasa Perangkat Lunak',
+    program: 'B.Sc. Software Engineering · GPA 3.95/4.00',
   },
 } as const;
 
-// Hard numbers used in the hero manifest.
+/** Hard numbers used in the hero manifest strip. `key` maps to dict.manifest[key]. */
 export const MANIFEST = [
-  { value: '16', label: 'Produk terkirim' },
-  { value: '02', label: 'HKI terdaftar' },
-  { value: '09', label: 'Klien nyata' },
-  { value: '25+', label: 'Sesi berbicara' },
+  { value: '2+', key: 'years' },
+  { value: '03', key: 'hki' },
+  { value: '13K+', key: 'users' },
+  { value: '3.95', key: 'gpa' },
 ] as const;
+
+export const CV_FILE_URL = '/documents/bagas-adhi-nugraha-cv.pdf';
 
 export const BREAKPOINTS = {
   sm: 640,
